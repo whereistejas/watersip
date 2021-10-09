@@ -1,0 +1,1 @@
+{"streams":[{"destination_sync_mode":"overwrite","stream":{"json_schema":{"$schema":"http://json-schema.org/draft-07/schema#","properties":{"1":{"type":"number"},"2":{"type":"number"},"3":{"type":"number"},"4":{"type":"number"}},"type":"object"},"name":"some"},"sync_mode":"full_refresh"}]}
