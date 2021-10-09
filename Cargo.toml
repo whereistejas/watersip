@@ -5,12 +5,12 @@ edition = "2021"
 
 [dependencies]
 async-trait = "0.1.42"
-dirtcrunch = { path = "/home/tsanap/repos/open-source-contrib/dirtcrunch" }
+dirtcrunch = { git = 'https://github.com/whereistejas/dirtcrunch.git' }
 futures = "0.3.17"
 serde = { version = "1.0.130", features = ["derive"] }
 serde_json = "1.0.68"
 tokio = { version = "1.12.0", features = ["fs", "macros"] }
 
 [build-dependencies]
-dirtcrunch = { path = "/home/tsanap/repos/open-source-contrib/dirtcrunch" }
+dirtcrunch = { git = 'https://github.com/whereistejas/dirtcrunch.git' }
 tokio = { version = "1.12.0", features = ["fs", "macros"] }
