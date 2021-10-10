@@ -16,8 +16,10 @@ jobs:
           - nightly
 
     steps:
-      - name: Checkout
+      - name: Checkout repository and submodules
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
 
       - name: Rust toolchain
         uses: actions-rs/toolchain@v1
