@@ -25,7 +25,7 @@ pub mod file_commands {
 
         let catalog = file.discover(&config).await;
 
-        catalog[0].clone()
+        catalog
     }
 
     pub async fn read() -> String {
@@ -94,11 +94,9 @@ pub mod file_commands {
 mod tests {
     use super::*;
     use file_commands::{discover, read};
-    use std::env;
 
     #[tokio::test]
     async fn test_discover() {
-        env::set_current_dir(env::var("CARGO_MANIFEST_DIR").unwrap());
         let catalog = discover().await;
 
         println!("{:?}", catalog);
@@ -111,7 +109,6 @@ mod tests {
 
     #[tokio::test]
     async fn test_read() {
-        env::set_current_dir(env::var("CARGO_MANIFEST_DIR").unwrap());
         let lines = read().await;
 
         println!("{:?}", lines);

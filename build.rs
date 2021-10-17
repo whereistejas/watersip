@@ -1,8 +1,10 @@
-use dirtcrunch::{create_file, get_objects};
+use dirtcrunch::create_file;
 use std::{env, fs};
 
 #[tokio::main]
 async fn main() {
+    println!("cargo:rerun-if-changed=airbyte");
+
     let sources_list =
         "airbyte/airbyte-config/init/src/main/resources/seed/source_definitions.yaml";
 
@@ -11,11 +13,10 @@ async fn main() {
 
     let sources: serde_yaml::Value = serde_yaml::from_str(&file).unwrap();
 
-    let objects = get_objects(sources).await;
-    let file = create_file(objects);
+    let file = create_file(sources).await;
+    let src_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
+    println!("{}", src_dir);
 
-    let src_dir = format!("{}/src/", env::var("CARGO_MANIFEST_DIR").unwrap());
-
-    let source_path = format!("{}/sources.rs", src_dir);
+    let source_path = format!("{}/src/sources.rs", src_dir);
     assert!(fs::write(source_path, &file).is_ok());
 }
