@@ -1,6 +1,4 @@
-pub mod sources;
-
-use sources::File;
+include!(concat!(env!("OUT_DIR"), "/source.rs"));
 
 pub mod file_commands {
     use crate::File;

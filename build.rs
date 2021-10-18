@@ -15,8 +15,10 @@ async fn main() {
 
     let file = create_file(sources).await;
 
-    let source_path = format!("{}/src/sources.rs", env::var("CARGO_MANIFEST_DIR").unwrap());
+    let source_path = format!("{}/source.rs", env::var("OUT_DIR").unwrap());
+
     let mut f = fs::OpenOptions::new()
+        .create(true)
         .write(true)
         .open(source_path)
         .unwrap();
