@@ -108,12 +108,13 @@ dependencies = [
 [[package]]
 name = "dirtcrunch"
 version = "0.1.0"
-source = "git+https://github.com/whereistejas/dirtcrunch.git#c00b3e72a4c86d7015fdaed1351df9235346ebeb"
+source = "git+https://github.com/whereistejas/dirtcrunch.git#ee7e1ea93e25a46e9439f452378d615b99fcbf3d"
 dependencies = [
  "anyhow",
  "async-trait",
  "bytes 1.1.0",
  "futures",
+ "log",
  "regex",
  "serde",
  "serde_json",
@@ -422,9 +423,9 @@ dependencies = [
 
 [[package]]
 name = "instant"
-version = "0.1.11"
+version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "716d3d89f35ac6a34fd0eed635395f4c3b76fa889338a4632e5231a8684216bd"
+checksum = "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
 dependencies = [
  "cfg-if",
 ]

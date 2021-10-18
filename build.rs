@@ -1,5 +1,5 @@
 use dirtcrunch::create_file;
-use std::{env, fs};
+use std::{env, fs, io::Write};
 
 #[tokio::main]
 async fn main() {
@@ -14,9 +14,12 @@ async fn main() {
     let sources: serde_yaml::Value = serde_yaml::from_str(&file).unwrap();
 
     let file = create_file(sources).await;
-    let src_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-    println!("{}", src_dir);
 
-    let source_path = format!("{}/src/sources.rs", src_dir);
-    assert!(fs::write(source_path, &file).is_ok());
+    let source_path = format!("{}/src/sources.rs", env::var("CARGO_MANIFEST_DIR").unwrap());
+    let mut f = fs::OpenOptions::new()
+        .write(true)
+        .open(source_path)
+        .unwrap();
+
+    assert!(f.write_all(file.as_bytes()).is_ok());
 }
